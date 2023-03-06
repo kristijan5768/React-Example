@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useCallback, useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
+  const [godina, setGodina] = useState(2023);
+  const [klik, setKlik] = useState(0);
+  const init = useCallback(() => {
+    console.log("component init");
+  }, []);
+  useEffect(() => {
+    init();
+  }, [init]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      <p>{godina}</p>
+      <button
+        onClick={() => {
+          setGodina(godina + 1);
+        }}
+      >
+        Dodaj broj
+      </button>
+      <p>{klik}</p>
+      <button
+        onClick={() => {
+          setKlik(klik + 1);
+        }}
+      >
+        Dodaj Klik
+      </button>
     </div>
   );
 }
